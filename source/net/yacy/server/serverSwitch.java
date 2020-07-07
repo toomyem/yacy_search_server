@@ -253,6 +253,10 @@ public class serverSwitch {
 		if(localPort != null) {
 			return localPort;
 		}
+		localPort = getConfigInt("bindPort", -1);
+		if (localPort != -1) {
+			return localPort;
+		}
 		return getConfigInt(SwitchboardConstants.SERVER_PORT, 8090);
 	}
 

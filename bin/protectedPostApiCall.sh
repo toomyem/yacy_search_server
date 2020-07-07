@@ -18,7 +18,10 @@ cd "`dirname $0`"
 . ./checkDataFolder.sh
 . ./checkConfFile.sh
 
-port=$(grep ^port= "$YACY_DATA_PATH/SETTINGS/yacy.conf" |cut -d= -f2)
+port=$(grep ^bindPort= "$YACY_DATA_PATH/SETTINGS/yacy.conf" |cut -d= -f2)
+if [ -z "$port" ]; then
+  port=$(grep ^port= "$YACY_DATA_PATH/SETTINGS/yacy.conf" |cut -d= -f2)
+fi
 admin=$(grep ^adminAccountUserName= "$YACY_DATA_PATH/SETTINGS/yacy.conf" |cut -d= -f2)
 adminAccountForLocalhost=$(grep ^adminAccountForLocalhost= "$YACY_DATA_PATH/SETTINGS/yacy.conf" | cut -d= -f2)
 
